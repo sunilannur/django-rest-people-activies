@@ -2,7 +2,7 @@
 
 1. create vitual
 
-2. do pip install requirements.ts
+2. do pip install requirements.txt
 
 3. runserver
 
