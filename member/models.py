@@ -20,14 +20,8 @@ class User(models.Model):
         return self.real_name
 
 
-class class UserSerializer(serializers.ModelSerializer):
-
-    activity_periods = serializers.SerializerMethodField()
-
-    class Meta:
-        model = User
-        fields = '__all__'(models.Model):
-    member = models.ForeignKey(User, on_delete=models.CASCADE,related_name='activity_periods')
+class ActivityPeriod(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='activity_periods')
     start_time = models.DateTimeField(auto_now=False, auto_now_add=False)
     end_time = models.DateTimeField(auto_now=False, auto_now_add=False)
  
@@ -37,6 +31,6 @@ class class UserSerializer(serializers.ModelSerializer):
         db_table = "activity_period"
     
     def __str__(self):
-        return self.member.real_name
+        return self.user.real_name
 
 

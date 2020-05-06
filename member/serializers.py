@@ -1,22 +1,20 @@
 from rest_framework import serializers
-from .models import * as member_models
-
+from .models import ActivityPeriod, User
 
 
 class ActivityPeriodSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = member_models.ActivityPeriod
-        fields = '__all__'
+        model = ActivityPeriod
+        fields = ('start_time', 'end_time')
 
 
 class UserSerializer(serializers.ModelSerializer):
-
-    # activity_periods = serializers.SerializerMethodField()
+    activity_periods = serializers.SerializerMethodField()
 
     class Meta:
-        model = member_models.User
-        fields = '__all__'
+        model = User
+        fields = ('id', 'real_name', 'tz', 'activity_periods')
 
     def get_activity_periods(self, user_obj):
-        return ActivityPeriod(user_obj.activity_periods.all()).data
+        return ActivityPeriodSerializer(user_obj.activity_periods.all(), many=True).data
