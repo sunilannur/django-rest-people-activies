@@ -1,0 +1,1 @@
+# django-rest-people-activies
