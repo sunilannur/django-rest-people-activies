@@ -1,13 +1,17 @@
-# django-rest-people-activies
+# django-rest-people-activities
 
-1. create vitual
+1. create virtual_environment
+    sudo apt-get install python3-venv
+    python3 -m venv virt_env && source virt_env/bin/activate
 
-2. do pip install requirements.txt
+2. python3 -m pip install -r requirements.txt
 
-3. runserver
 
-4. check http://127.0.0.1:8000/api/users
+#for adding some dummy data#
+3. used to populate the data management command "python manage.py add_user_activities"
 
-5. used to populate the data management command "python manage.py add_user_activities"
+4. python3 manage.py makemigrations
 
-6. check again http://127.0.0.1:8000/api/users
+5. python3 manage.py migrate
+
+6. python3 manage.py runserver
